@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import {
   View,Text,Button,StyleSheet
@@ -13,7 +14,6 @@ const LoginScreen = ({navigation}) => {
       <Button title="Logar" onPress={()=> {navigation.navigate('Home', {})}}></Button>
       <Button title="Não é registrado? Clique aqui" onPress={()=> {navigation.navigate('Register', {})}}></Button>
     </View>
-    
   );
 }
 const HomeScreen = () => {
