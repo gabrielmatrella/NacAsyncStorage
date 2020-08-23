@@ -9,13 +9,9 @@ import {unlogSession} from './src/Storage';
 
 import LoginScreen from './src/pages/Login';
 import AreaLogada from './src/pages/AreaLogada';
+import RecuperarSenha from './src/pages/RecuperarSenha';
 
 const Stack = createStackNavigator();
-
-
-const ForgotPasswordScreen = () => {
-  return <Text>Formulario para criar nova senha para o usuario</Text>;
-};
 
 const App = () => {
   return (
@@ -34,7 +30,7 @@ const App = () => {
         />
         <Stack.Screen
           name="ForgotPassword"
-          component={ForgotPasswordScreen}
+          component={RecuperarSenha}
           options={{title: 'Recuperar senha'}}
         />
       </Stack.Navigator>
