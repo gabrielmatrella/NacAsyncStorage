@@ -30,6 +30,6 @@ export const unlogSession = (key, callback = null) => {
   } catch (e) {
     printError('Não foi possível remover sessão do usuário');
   }
-}; 
+};
 
 const printError = (error) => new Error(error);

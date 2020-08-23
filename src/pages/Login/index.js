@@ -19,7 +19,11 @@ const Login = ({navigation}) => {
 
       setEmail('');
       setPassword('');
-      setSession('userLogged', true);
+      setSession('userLogged', {
+        email: email,
+        name: user.name,
+        isLogged: true
+      });
       navigation.navigate('Home', {});
     });
   };
