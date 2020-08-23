@@ -20,12 +20,17 @@ const AreaLogada = ({navigation}) => {
     }, []);
   
     return (
+      <>
       <Text>
         Seja bem vindo: {name}
+      </Text>
+      <Text>
+        Você está em uma área restrita
+      </Text>
         <Button
           onPress={() => unlogUser()}
           title="Deslogar" />
-      </Text>
+      </>
     );
   };
 
