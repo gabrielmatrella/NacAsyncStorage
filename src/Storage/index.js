@@ -32,4 +32,12 @@ export const unlogSession = (key, callback = null) => {
   }
 };
 
+export const updatePassword = (key, user, callback = null) => {
+  try {
+    AsyncStorage.mergeItem(key, JSON.stringify(user), callback);
+  } catch (e) {
+    printError('Não foi possível atualizar senha');
+  }
+}
+
 const printError = (error) => new Error(error);
