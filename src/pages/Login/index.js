@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import { View } from 'react-native';
-
-import { getUser, setSession } from '../Storage';
+import React, {useState} from 'react';
+import {View} from 'react-native';
+import {getUser, setSession} from '../../Storage';
 
 import * as S from './styled';
 
-const Login = ({ navigation }) => {
+const Login = ({navigation}) => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
 
@@ -21,40 +20,41 @@ const Login = ({ navigation }) => {
   return (
     <View>
       <S.Input
+        style={{marginTop: 150}}
         value={email}
-        onChangeText={val => setEmail(val)}
+        onChangeText={(val) => setEmail(val)}
         placeholder="Digite seu email"
       />
       <S.Input
         value={password}
-        onChangeText={val => setPassword(val)}
+        onChangeText={(val) => setPassword(val)}
         secureTextEntry={true}
         placeholder="Digite sua senha"
       />
 
-      <S.SubmitWrapper >
-        <S.Option
-          onPress={() => validateFields()}
-        >
+      <S.SubmitWrapper>
+        <S.Option width={80} onPress={() => validateFields()}>
           <S.Title>Logar</S.Title>
         </S.Option>
         <S.Option
+          width={80}
+          marginTop={10}
           onPress={() => {
             navigation.navigate('Register', {});
-          }}
-        >
+          }}>
           <S.Title>Cadastre-se</S.Title>
         </S.Option>
         <S.Option
+          width={80}
+          marginTop={10}
           onPress={() => {
             navigation.navigate('ForgotPassword', {});
-          }}
-        >
-          <S.Title>Esqueceu sua senha? Clique aqui</S.Title>
+          }}>
+          <S.Title>Esqueceu sua senha?</S.Title>
         </S.Option>
       </S.SubmitWrapper>
     </View>
-  )
+  );
 };
 
 export default Login;

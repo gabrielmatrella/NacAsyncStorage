@@ -1,12 +1,13 @@
 import 'react-native-gesture-handler';
 import React from 'react';
+import Cadastro from './src/pages/Cadastro';
 import {Text, StyleSheet, Button} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import { unlogSession } from './src/Storage';
+import {unlogSession} from './src/Storage';
 
-import LoginScreen from './src/Login';
+import LoginScreen from './src/pages/Login';
 
 const Stack = createStackNavigator();
 
@@ -19,19 +20,7 @@ const HomeScreen = ({navigation}) => {
   return (
     <Text>
       Seja bem vindo: ((Preencher com usuario logado do asyncstorage))
-
-      <Button
-        onPress={() => unlogUser()}
-        title="Deslogar"
-      />
-    </Text>
-  );
-};
-
-const RegisterScreen = () => {
-  return (
-    <Text>
-      Criar formulario de registro com campos nome,email,senha,confirmar senha
+      <Button onPress={() => unlogUser()} title="Deslogar" />
     </Text>
   );
 };
@@ -52,7 +41,7 @@ const App = () => {
         />
         <Stack.Screen
           name="Register"
-          component={RegisterScreen}
+          component={Cadastro}
           options={{title: 'Cadastro'}}
         />
         <Stack.Screen
