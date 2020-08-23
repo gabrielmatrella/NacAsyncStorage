@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {View, SafeAreaView, Text} from 'react-native';
 import {insertUser, getUser} from '../../Storage';
 import Button from '../../components/Button';
 import * as S from './styles';
@@ -9,13 +8,13 @@ const Cadastro = ({navigation}) => {
 
   const handleRegister = () => {
     if (!user.name) {
-      alert('preencha o nome');
+     return alert('preencha o nome');
     }
     if (!user.email) {
-      alert('preencha o email');
+     return alert('preencha o email');
     }
     if (!user.password) {
-      alert('preencha a senha ');
+     return alert('preencha a senha ');
     }
 
     getUser(user.email, (error, data) => {
@@ -32,7 +31,7 @@ const Cadastro = ({navigation}) => {
 
   return (
     <S.Container>
-      <S.RegisterText marginb={30} size={40} color="#707070">
+      <S.RegisterText size={40} color="#707070">
         Cadastro
       </S.RegisterText>
       <S.RegisterInput
@@ -52,7 +51,8 @@ const Cadastro = ({navigation}) => {
         onChangeText={(text) => setUser((data) => ({...data, password: text}))}
       />
 
-      <Button width="80" marginTop="10" onPress={() => handleRegister()}>
+      <Button
+        onPress={() => handleRegister()}>
         <S.RegisterText size={20} color="#ffff">
           Cadastrar
         </S.RegisterText>

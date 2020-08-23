@@ -17,7 +17,6 @@ export const RegisterInput = styled.TextInput`
 `;
 
 export const RegisterText = styled.Text`
-  margin-bottom: ${(props) => props.marginb + '%'};
   color: ${(props) => props.color};
   font-size: ${(props) => props.size + 'px'};
 `;

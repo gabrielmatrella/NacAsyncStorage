@@ -13,14 +13,17 @@ const Stack = createStackNavigator();
 
 const HomeScreen = ({navigation}) => {
   const unlogUser = () => {
-    unlogSession('userLogged', false);
-    navigation.navigate('Login', {});
+    unlogSession('userLogged', () => {
+      navigation.navigate('Login', {});
+    });
   };
 
   return (
     <Text>
       Seja bem vindo: ((Preencher com usuario logado do asyncstorage))
-      <Button onPress={() => unlogUser()} title="Deslogar" />
+      <Button
+        onPress={() => unlogUser()}
+        title="Deslogar" />
     </Text>
   );
 };
@@ -37,7 +40,7 @@ const App = () => {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{title: 'Bem vindo'}}
+          options={{title: 'Bem vindo', headerLeft: null}}
         />
         <Stack.Screen
           name="Register"

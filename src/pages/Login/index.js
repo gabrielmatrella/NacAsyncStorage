@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View} from 'react-native';
 import {getUser, setSession} from '../../Storage';
 
@@ -11,11 +11,25 @@ const Login = ({navigation}) => {
   const validateFields = () => {
     if (!password || !email) return alert('Senha ou email vázio');
 
-    setEmail('');
-    setPassword('');
-    setSession('userLogged', true);
-    navigation.navigate('Home', {});
+    getUser(email, (err, data) => {
+      if (!data) return alert('Usuário não encontrado');
+
+      const user = JSON.parse(data);
+      if (user.password !== password) return alert('Senha errada');
+
+      setEmail('');
+      setPassword('');
+      setSession('userLogged', true);
+      navigation.navigate('Home', {});
+    });
   };
+
+  useEffect(() => {
+    getUser('userLogged', (err, data) => {
+
+      if (data) navigation.navigate('Home');
+    }) 
+  }, []);
 
   return (
     <View>
@@ -33,20 +47,17 @@ const Login = ({navigation}) => {
       />
 
       <S.SubmitWrapper>
-        <S.Option width={80} onPress={() => validateFields()}>
+        <S.Option
+        onPress={() => validateFields()}>
           <S.Title>Logar</S.Title>
         </S.Option>
         <S.Option
-          width={80}
-          marginTop={10}
           onPress={() => {
             navigation.navigate('Register', {});
           }}>
           <S.Title>Cadastre-se</S.Title>
         </S.Option>
         <S.Option
-          width={80}
-          marginTop={10}
           onPress={() => {
             navigation.navigate('ForgotPassword', {});
           }}>

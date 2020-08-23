@@ -26,7 +26,7 @@ export const setSession = (key, isLogged, callback = null) => {
 
 export const unlogSession = (key, callback = null) => {
   try {
-    AsyncStorage.removeItem(key);
+    AsyncStorage.removeItem(key, callback);
   } catch (e) {
     printError('Não foi possível remover sessão do usuário');
   }
